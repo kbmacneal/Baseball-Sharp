@@ -1,5 +1,9 @@
 # Changelog
 
+#### 0.1.5-alpha
+
+- Added Divisions() endpoint.
+
 #### 0.1.4-alpha
 
 - Added DepthChart() endpoint.
