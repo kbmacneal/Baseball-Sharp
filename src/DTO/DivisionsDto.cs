@@ -3,10 +3,10 @@
     public class DivisionsDto
     {
         public string? copyright { get; set; }
-        public Division[]? divisions { get; set; }
+        public LeagueDivision[]? divisions { get; set; }
     }
 
-    public class Division
+    public class LeagueDivision
     {
         public int? id { get; set; }
         public string? name { get; set; }

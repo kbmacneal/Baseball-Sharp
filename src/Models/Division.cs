@@ -1,6 +1,6 @@
 ﻿namespace BaseballSharp.Models
 {
-    class Divisions
+    public class Division
     {
         /// <summary>
         /// The ID for the division. Can be used to build other API calls.
@@ -27,7 +27,7 @@
         /// </summary>
         public int? LeagueId { get; protected set; }
 
-        public Divisions(int? divisionId, string? divisionName, string? shortDivisionName, string? divisionAbbreviation, int? leagueId)
+        public Division(int? divisionId, string? divisionName, string? shortDivisionName, string? divisionAbbreviation, int? leagueId)
         {
             DivisionId = divisionId;
             DivisionName = divisionName;

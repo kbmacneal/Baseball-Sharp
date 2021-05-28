@@ -5,8 +5,8 @@ using BaseballSharp.Models;
 using BaseballSharp.DTO.GameSchedule;
 using BaseballSharp.DTO.PitchingReport;
 using BaseballSharp.DTO.Teams;
-using BaseballSharp.DTO;
 using BaseballSharp.DTO.Linescore;
+using BaseballSharp.DTO;
 
 namespace BaseballSharp
 {
@@ -288,6 +288,40 @@ namespace BaseballSharp
             }
 
             return depthCharts;
+        }
+
+        /// <summary>
+        /// Endpoint to get the MLB divisions and associated data.
+        /// </summary>
+        /// <returns>A list of Division objects.</returns>
+        public static List<Models.Division> Divisions()
+        {
+            List<Models.Division> divisions = new();
+
+            try
+            {
+                WebClient client = new();
+                string jsonResponse = client.DownloadString(_baseUrl + "/divisions?sportId=1");
+
+                DivisionsDto? teamDivisions = JsonSerializer.Deserialize<DivisionsDto>(jsonResponse);
+
+                foreach (var division in teamDivisions.divisions)
+                {
+                    divisions.Add(new Models.Division(
+                        division?.id,
+                        division?.name,
+                        division?.nameShort,
+                        division?.abbreviation,
+                        division?.league?.id
+                        ));
+                }
+            }
+            catch (WebException)
+            {
+                throw new WebException();
+            }
+
+            return divisions;
         }
     }
 }
