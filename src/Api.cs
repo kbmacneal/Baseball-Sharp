@@ -17,7 +17,7 @@ namespace BaseballSharp
     /// </summary>
     public class Api
     {
-        private static readonly string _baseUrl = "http://statsapi.mlb.com/api/v1";
+        private const string _baseUrl = "http://statsapi.mlb.com/api/v1";
 
         private static async Task<string> getResponse(string? Endpoint)
         {
@@ -155,7 +155,7 @@ namespace BaseballSharp
                     teamRostersJson?.teamId,
                     item?.position?.abbreviation,
                     item?.status?.code,
-                    item?.status?.description));
+                    item?.status?.description ?? ""));
             }
 
             return teamRosters;
